@@ -7,7 +7,7 @@ import AppButton from "../components/AppButton";
 import { VideoView, useVideoPlayer } from "expo-video";
 
 export default function Videos({route}){
-  const { nombre, descripcion, categoria } = route.params;
+  const { descripcion, categoria } = route.params;
   const navigation = useNavigation();
 
   const subcategorias = [
@@ -397,15 +397,19 @@ export default function Videos({route}){
           <VideoView
             key={index}
             style={styles.backgroundVideo}
-            player={useVideoPlayer(subcategoria.video, player=>{
+            player={useVideoPlayer(subcategoria.video, (player) => {
               //para configurar el player una vez este este creado, en este caso solo puse que el timepo actual del video inicie en 0 segundos
-              player.currentTime = 0
+              player.currentTime = 0;
             })}
-            contentFit="fill" //como el recize mode
+            contentFit="contain" //como el recize mode
           />
         ))}
       </View>
-      <AppButton texto={"¡Aprender!"} color={"primary"} onPress={()=>navigation.navigate("Camara")} />
+      <AppButton
+        texto={"¡Aprender!"}
+        color={"primary"}
+        onPress={() => navigation.navigate("Camara", { descripcion, categoria })}
+      />
       <AppButton
         texto={"Ir atras"}
         color={"secondary"}

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, TouchableOpacity, Modal, StyleSheet, Image, Text } from 'react-native';
+import { SafeAreaView, View, TouchableOpacity, Modal, StyleSheet, Image, Text, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AppText from "../components/AppText";
 import colors from "../config/colors";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Dashboard() {
   const navigation = useNavigation()
@@ -11,6 +12,16 @@ export default function Dashboard() {
   const navigateToCategory = (categoria) => {
     navigation.navigate("SubcategoriasScreen", { categoria }); //navegando a SubcategoriasScreen (route) y tiene como parametro (categoria)
   };
+
+  const cerrarSesion = async () => {
+    try{
+      await AsyncStorage.removeItem('token') //elimina el token
+      Alert.alert("¡Sesion cerrada con exito!")
+      navigation.navigate("Sesion") 
+    }catch(error){
+      Alert.alert("Error al cerrar sesion")
+    }
+  }
 
   return (
     <SafeAreaView style={styles.contenedorPrincipal}>
@@ -78,10 +89,10 @@ export default function Dashboard() {
             <TouchableOpacity
               onPress={() => {
                 setMenuVisible(false);
-                navigation.navigate("Sesion");
+                cerrarSesion()
               }}
             >
-              <AppText text={"Cerrar Sesion"} />
+              <AppText text={"Cerrar Sesion"}  />
             </TouchableOpacity>
           </View>
         </TouchableOpacity>
@@ -150,12 +161,12 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
   contenedorPrincipal: {
     flex: 1,
-    backgroundColor: colors.background
+    backgroundColor: colors.background,
   },
   menuContainer: {
     flex: 1,
     alignItems: "flex-end",
-    marginTop: 25,
+    marginTop: 25
   },
   dropdownMenu: {
     backgroundColor: colors.background,

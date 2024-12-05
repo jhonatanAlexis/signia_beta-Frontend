@@ -16,11 +16,10 @@ import SubcategoriasScreen from "../screens/SubcategoriasScreen";
 import VideosUsuario from "../screens/VideosUsuario";
 import CrearNombre from "../screens/CrearNombre"
 import CargarVideoUsuario from "../screens/CargarVideoUsuario";
-import Quizzes from "../screens/Quizzes";
 import Camara from "../screens/Camara"
 
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 //headerShown quita el nombre de la pantalla
 //{(props) => <Sesion {...props} texto={texto} />} -> se pasan todas las propiedades necesarias para Sesion (gracias a ...props) junto con una propiedad extra texto
@@ -44,7 +43,6 @@ export default function AppNavigator({texto}) {
         <Stack.Screen name="VideosUsuario" component={VideosUsuario} options={{headerShown: false}}/>
         <Stack.Screen name="CrearNombre" component={CrearNombre} options={{headerShown: false}}/>
         <Stack.Screen name="CargarVideoUsuario" component={CargarVideoUsuario} options={{headerShown: false}}/>
-        <Stack.Screen name="Quizzes" component={Quizzes} options={{headerShown: false}}/>
         <Stack.Screen name="Camara" component={Camara} options={{headerShown: true, headerTitle: '', headerTransparent: true}}/> 
       </Stack.Navigator>
     </NavigationContainer>

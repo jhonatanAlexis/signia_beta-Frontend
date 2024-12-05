@@ -4,7 +4,7 @@ import { Text, StyleSheet, Platform } from "react-native";
 export default function AppText({text, style}){
     return (
         //se pone style para que pueda recibir otros estilos desde otra vista
-        <Text style={[styles.text, style]}>
+        <Text style={[styles.text, style]} >
             {text}
         </Text>
     )

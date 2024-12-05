@@ -14,13 +14,13 @@ export default function VideosUsuario(){
 
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity onPress={()=>navigation.navigate("Dashboard")}>
-        <AppText style={styles.texto} text={"Signia beta"}/>
+        <TouchableOpacity onPress={() => navigation.navigate("Dashboard")}>
+          <AppText style={styles.texto} text={"Signia beta"} />
         </TouchableOpacity>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <View style={styles.cardsContainer}>
             <View style={styles.cardContainer}>
-              <TouchableOpacity onPress={()=>navigateToCategory("Todos")}>
+              <TouchableOpacity onPress={() => navigateToCategory("Todos")}>
                 <Image
                   source={require("../assets/imagenes/todos.png")}
                   style={styles.cardImage}
@@ -29,9 +29,7 @@ export default function VideosUsuario(){
               <Text style={styles.texto}>Todos</Text>
             </View>
             <View style={styles.cardContainer}>
-              <TouchableOpacity
-                onPress={() => navigateToCategory("Nombres")}
-              >
+              <TouchableOpacity onPress={() => navigateToCategory("Nombres")}>
                 <Image
                   source={require("../assets/imagenes/nombres.png")}
                   style={styles.cardImage}
@@ -96,9 +94,13 @@ export default function VideosUsuario(){
               <Text style={styles.texto}>Números</Text>
             </View>
           </View>
-
-          <AppButton anotherStyle={styles.botonMargen} texto={"Ir atras"} color={"primary"} onPress={()=>navigation.navigate("Dashboard")}/>
         </ScrollView>
+        <AppButton
+          anotherStyle={styles.atras}
+          texto={"Ir atras"}
+          color={"primary"}
+          onPress={() => navigation.navigate("Dashboard")}
+        />
       </SafeAreaView>
     );
 }
@@ -107,11 +109,11 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   container: {
     flex: 1,
-    backgroundColor: colors.background
+    backgroundColor: colors.background,
   },
   cardContainer: {
     backgroundColor: colors.white,
@@ -127,7 +129,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    paddingHorizontal: "5%"
+    paddingHorizontal: "5%",
   },
   cardImage: {
     width: "100%",
@@ -136,9 +138,9 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   texto: {
-    textAlign: "center"
+    textAlign: "center",
   },
-  botonMargen:{
-    marginVertical: "5%"
-  }
+  atras: {
+    alignSelf: "center",
+  },
 });

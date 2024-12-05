@@ -14,50 +14,16 @@ export default function SubcategoriasScreen({ route }) {
     navigation.navigate("CrearNombre", {categoria})
   )
 
-  const navigateToQuizzes = (categoria) => (
-    navigation.navigate("Quizzes", {categoria})
-  )
-
   const navigation = useNavigation();
   const { categoria } = route.params; //obtiene el parametro de la ruta ("categoria")
 
   const subcategorias = [
-    {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/a.jpg.avif"),
-      descripcion: "A",
-      categoria: categoria,
-    },
-    {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/b.avif"),
-      descripcion: "B",
-      categoria: categoria,
-    },
-    {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/c.png"),
-      descripcion: "C",
-      categoria: categoria,
-    },
-    {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/d.avif"),
-      descripcion: "D",
-      categoria: categoria,
-    },
-    {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/e.png"),
-      descripcion: "E",
-      categoria: categoria,
-    },
-    {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/f.webp"),
-      descripcion: "F",
-      categoria: categoria,
-    },
+    {nombre: "Abecedario", imagen: require("../assets/imagenes/a.jpg.avif"),descripcion: "A",categoria: categoria},
+    {nombre: "Abecedario",imagen: require("../assets/imagenes/b.avif"),descripcion: "B",categoria: categoria},
+    {nombre: "Abecedario", imagen: require("../assets/imagenes/c.png"),descripcion: "C",categoria: categoria},
+    {nombre: "Abecedario", imagen: require("../assets/imagenes/d.avif"),descripcion: "D",categoria: categoria},
+    {nombre: "Abecedario",imagen: require("../assets/imagenes/e.png"),descripcion: "E",categoria: categoria},
+    {nombre: "Abecedario", imagen: require("../assets/imagenes/f.webp"),descripcion: "F",categoria: categoria},
     {
       nombre: "Abecedario",
       imagen: require("../assets/imagenes/g.jpg"),
@@ -203,12 +169,6 @@ export default function SubcategoriasScreen({ route }) {
       categoria: categoria,
     },
     {
-      nombre: "Abecedario",
-      imagen: require("../assets/imagenes/quiz.avif"),
-      descripcion: "Quiz",
-      categoria: categoria,
-    },
-    {
       nombre: "Hogar",
       imagen: require("../assets/imagenes/cocina.avif"),
       descripcion: "Cocina",
@@ -260,12 +220,6 @@ export default function SubcategoriasScreen({ route }) {
       nombre: "Hogar",
       imagen: require("../assets/imagenes/closet.avif"),
       descripcion: "Closet",
-      categoria: categoria,
-    },
-    {
-      nombre: "Hogar",
-      imagen: require("../assets/imagenes/quiz.avif"),
-      descripcion: "Quiz",
       categoria: categoria,
     },
     {
@@ -323,12 +277,6 @@ export default function SubcategoriasScreen({ route }) {
       categoria: categoria,
     },
     {
-      nombre: "Comida",
-      imagen: require("../assets/imagenes/quiz.avif"),
-      descripcion: "Quiz",
-      categoria: categoria,
-    },
-    {
       nombre: "Deportes",
       imagen: require("../assets/imagenes/futbol.avif"),
       descripcion: "Futbol",
@@ -380,12 +328,6 @@ export default function SubcategoriasScreen({ route }) {
       nombre: "Deportes",
       imagen: require("../assets/imagenes/volley.avif"),
       descripcion: "Volleyball",
-      categoria: categoria,
-    },
-    {
-      nombre: "Deportes",
-      imagen: require("../assets/imagenes/quiz.avif"),
-      descripcion: "Quiz",
       categoria: categoria,
     },
     {
@@ -443,12 +385,6 @@ export default function SubcategoriasScreen({ route }) {
       categoria: categoria,
     },
     {
-      nombre: "Familia",
-      imagen: require("../assets/imagenes/quiz.avif"),
-      descripcion: "Quiz",
-      categoria: categoria,
-    },
-    {
       nombre: "Numeros",
       imagen: require("../assets/imagenes/1.png"),
       descripcion: "1",
@@ -502,12 +438,6 @@ export default function SubcategoriasScreen({ route }) {
       descripcion: "9",
       categoria: categoria,
     },
-    {
-      nombre: "Numeros",
-      imagen: require("../assets/imagenes/quiz.avif"),
-      descripcion: "Quiz",
-      categoria: categoria,
-    },
   ];
 
   //filter crea un nuevo array con los elementos de subcategorias y lo almacena en la variable filterSubcategorias
@@ -538,16 +468,17 @@ export default function SubcategoriasScreen({ route }) {
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.cardsContainer}>
-          {/* mapea sobre el array filterSubcategorias, asgina una variable nueva llamada subcategoria y el index va de la par con key (puedo ponerlo como datos en el array) */}
+          {/* mapea sobre el array filterSubcategorias, asgina una variable nueva llamada subcategoria que es donde se va iterando y la key va de la par con index para asignar una clave a cada elemento que se renderizara */}
           {filterSubcategorias.map((subcategoria, index) => (
-            //operador ternario para que si la descripcion es "Nombres" te redirija a la vista para crear un nombre, si es quizz te redirije a los quizzes y si no a la del video
             <TouchableOpacity
               onPress={() =>
-                subcategoria.descripcion === "Quiz"
-                  ? navigateToQuizzes(subcategoria.categoria)
-                  : subcategoria.descripcion === "Nombres"
+                  subcategoria.descripcion === "Nombres"
                   ? navigateToNombres(subcategoria.categoria)
-                  : navigateToVideos(subcategoria.nombre, subcategoria.descripcion, subcategoria.categoria)
+                  : navigateToVideos(
+                      subcategoria.nombre,
+                      subcategoria.descripcion,
+                      subcategoria.categoria
+                    )
               }
               style={styles.cardContainer}
               key={index}
@@ -557,12 +488,13 @@ export default function SubcategoriasScreen({ route }) {
             </TouchableOpacity>
           ))}
         </View>
-        <AppButton
-          texto={"Regresar"}
-          color={"primary"}
-          onPress={() => navigation.navigate("Dashboard")}
-        />
       </ScrollView>
+      <AppButton
+        texto={"Regresar"}
+        color={"primary"}
+        onPress={() => navigation.navigate("Dashboard")}
+        anotherStyle={styles.atras}
+      />
     </SafeAreaView>
   );
 }
@@ -617,5 +549,8 @@ const styles = StyleSheet.create({
   rightContainer: {
     flex: 1,
     alignItems: "flex-end",
+  },
+  atras: {
+    alignSelf: "center"
   },
 });
