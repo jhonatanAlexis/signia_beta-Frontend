@@ -16,7 +16,7 @@ export default function SolicitarRestablecerContraseña(){
       try{
         const response = await solicitarRestablecerContraseña(email)
         Alert.alert("Restablecer contraseña", response.message)
-        navigation.navigate("RestablecerContraseña")
+        navigation.navigate("RestablecerContrasena")
       }catch(error){
         Alert.alert("¡Ups! Algo no salió bien", error.response.data.message);
       }finally{

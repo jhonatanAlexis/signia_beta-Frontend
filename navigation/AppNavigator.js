@@ -5,9 +5,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/Login";
 import Sesion from "../screens/Sesion";
 import Dashboard from "../screens/Dashboard";
-import RestablecerContraseña from "../screens/RestablecerContraseña";
+import RestablecerContraseña from "../screens/RestablecerContrasena";
 import Register from "../screens/Register";
-import SolicitarRestablerContraseña from "../screens/SolicitarRestablecerContraseña"
+import SolicitarRestablerContraseña from "../screens/SolicitarRestablecerContrasena"
 import DatosUsuario from "../screens/DatosUsuario";
 import ActualizarPerfil from "../screens/ActualizarPerfil";
 import EliminarPerfil from "../screens/EliminarPerfil";

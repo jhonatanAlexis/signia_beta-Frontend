@@ -51,7 +51,7 @@ export default function Login(){
 
           <Text
             onPress={() =>
-              navigation.navigate("SolicitarRestablecerContraseña")
+              navigation.navigate("SolicitarRestablecerContrasena")
             }
           >
             ¿Olvidaste tu contraseña?

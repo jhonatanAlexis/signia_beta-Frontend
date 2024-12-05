@@ -66,7 +66,7 @@ export default function RestablecerContraseña(){
             texto={"Regresar"}
             color={"secondary"}
             onPress={() =>
-              navigation.navigate("SolicitarRestablecerContraseña")
+              navigation.navigate("SolicitarRestablecerContrasena")
             }
             disabled={isLoading}
           />
