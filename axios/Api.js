@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 //se crea la api de manera global
 const api = axios.create({
-  baseURL: "http://192.168.1.82:5000",
+  baseURL: "http://192.168.0.226:5000",
   headers: {
     "Content-Type": "application/json",
   },
